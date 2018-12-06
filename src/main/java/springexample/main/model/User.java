@@ -1,71 +1,35 @@
 package springexample.main.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class User {
 
+	@JsonProperty
 	int id;
 	String name;
 	String username;
 	String email;
-	
-	class Address {
-		String street;
-		String suite;
-		String city;
-		String zipcode;
-		
-		public String getStreet() {
-			return street;
-		}
-
-		public void setStreet(String street) {
-			this.street = street;
-		}
-
-		public String getSuite() {
-			return suite;
-		}
-
-		public void setSuite(String suite) {
-			this.suite = suite;
-		}
-
-		public String getCity() {
-			return city;
-		}
-
-		public void setCity(String city) {
-			this.city = city;
-		}
-
-		public String getZipcode() {
-			return zipcode;
-		}
-
-		public void setZipcode(String zipcode) {
-			this.zipcode = zipcode;
-		}
-
-		class Geo {
-			String lat;
-			String lng;
-			public String getLat() {
-				return lat;
-			}
-			public void setLat(String lat) {
-				this.lat = lat;
-			}
-			public String getLng() {
-				return lng;
-			}
-			public void setLng(String lng) {
-				this.lng = lng;
-			}
-		}
-	}
-	
+	Address address;
 	String phone;
 	String website;
-	
+	Company company;
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -112,32 +76,5 @@ public class User {
 
 	public void setWebsite(String website) {
 		this.website = website;
-	}
-
-	class Company {
-		
-		String name;
-		String catchPhrase;
-		String bs;
-		
-		public String getName() {
-			return name;
-		}
-		public void setName(String name) {
-			this.name = name;
-		}
-		public String getCatchPhrase() {
-			return catchPhrase;
-		}
-		public void setCatchPhrase(String catchPhrase) {
-			this.catchPhrase = catchPhrase;
-		}
-		public String getBs() {
-			return bs;
-		}
-		public void setBs(String bs) {
-			this.bs = bs;
-		}
-		
 	}
 }

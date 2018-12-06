@@ -5,8 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,17 +39,11 @@ public class UsersControllerTest {
 	@Test
 	public void getAllUsers() throws Exception {
 		String usersList = builduserList();
-		//String expectedResponse = getExpectedUserResponse();
 		when(users.getUsers()).thenReturn(usersList);
 		mvc.perform(get(api_get_users).accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
 
 	}
 	
-//	private String getExpectedUserResponse() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
 	private String builduserList() {
 		// TODO Auto-generated method stub
 		return null;

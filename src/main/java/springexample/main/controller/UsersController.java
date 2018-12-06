@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import springexample.main.model.User;
 import springexample.main.service.UserService;
 
 
@@ -17,12 +18,12 @@ public class UsersController {
 	UserService userService;
 	
 	@GetMapping("/users")
-	String getUsers() {
+	public String getUsers() {
 		return userService.getUsers();
 	}
 	
 	@GetMapping("/user/{id}")
-	String getUsers(@PathVariable(value = "id") Long userId) {
+	public User getUsers(@PathVariable(value = "id") Long userId) {
 		return userService.getSpecificUser(userId);
 	}
 }
