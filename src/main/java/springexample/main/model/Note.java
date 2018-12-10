@@ -15,6 +15,8 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
 public class Note {
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -75,4 +77,9 @@ public class Note {
 		this.updatedAt = updatedAt;
 	}
 
+	@Override
+	public String toString() {
+		return "Note [id=" + id + ", title=" + title + ", content=" + content + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + "]";
+	}
 }

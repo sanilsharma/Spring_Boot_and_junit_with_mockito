@@ -77,4 +77,10 @@ public class User {
 	public void setWebsite(String website) {
 		this.website = website;
 	}
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", username=" + username + ", email=" + email + ", address="
+				+ address + ", phone=" + phone + ", website=" + website + ", company=" + company + "]";
+	}
 }
