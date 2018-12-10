@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import springexample.main.controller.UsersController;
+import springexample.main.model.User;
 import springexample.main.service.UserService;
 
 @RunWith(SpringRunner.class)
@@ -38,14 +39,14 @@ public class UsersControllerTest {
 
 	@Test
 	public void getAllUsers() throws Exception {
-		String usersList = builduserList();
+		User[] usersList = builduserList();
 		when(users.getUsers()).thenReturn(usersList);
 		mvc.perform(get(api_get_users).accept(MediaType.APPLICATION_JSON)).andDo(print()).andExpect(status().isOk());
 
 	}
 	
-	private String builduserList() {
-		// TODO Auto-generated method stub
+	private User[] builduserList() {
+		
 		return null;
 	}
 

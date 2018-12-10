@@ -13,9 +13,9 @@ public class UsersServiceImp implements UserService {
 	
 	
 	@Override
-	public String getUsers() {	
+	public User[] getUsers() {	
 		RestTemplate restTemp = new RestTemplate();
-		String result = restTemp.getForObject(json_placeholder_api_for_user, String.class);
+		User[] result = restTemp.getForObject(json_placeholder_api_for_user, User[].class);
 		return result;
 	}
 

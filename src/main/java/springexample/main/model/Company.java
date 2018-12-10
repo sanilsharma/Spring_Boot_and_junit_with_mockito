@@ -30,4 +30,8 @@ public class Company {
 		this.bs = bs;
 	}
 
+	@Override
+	public String toString() {
+		return "Company [name=" + name + ", catchPhrase=" + catchPhrase + ", bs=" + bs + "]";
+	}
 }
