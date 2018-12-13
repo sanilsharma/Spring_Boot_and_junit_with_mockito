@@ -16,18 +16,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springexample.main.model.Note;
+import springexample.main.model.NotesResponse;
 import springexample.main.service.NoteService;
 
 @RestController
 @RequestMapping("/api")
-public class NoteController {
+public class NoteController extends BaseController {
 
 	@Autowired
 	NoteService noteService;
 
 	@GetMapping("/notes")
-	public List<Note> getAllNotes() {
-		return noteService.getAllNotes();
+	public ResponseEntity<?> getAllNotes() {
+		List<Note> noteResponse = noteService.getAllNotes();
+		if (isXmlRequested()) {
+			return ResponseEntity.ok(new NotesResponse(noteResponse));
+        }
+		else {
+			return ResponseEntity.ok(noteResponse) ;
+		}
 	}
 
 	@PostMapping("/notes")
@@ -36,8 +43,8 @@ public class NoteController {
 	}
 
 	@GetMapping("/notes/{id}")
-	public Note getNoteById(@PathVariable(value = "id") Long noteId) {
-		return noteService.getNoteById(noteId);
+	public ResponseEntity<?> getNoteById(@PathVariable(value = "id") Long noteId) {
+		return ResponseEntity.ok(noteService.getNoteById(noteId));
 	}
 
 	@PutMapping("/notes/{id}")

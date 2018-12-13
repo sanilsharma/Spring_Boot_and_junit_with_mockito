@@ -1,12 +1,16 @@
 package springexample.main.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 import java.util.Date;
 
@@ -14,27 +18,34 @@ import java.util.Date;
 @Table(name = "notes")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+@XmlAccessorType(XmlAccessType.FIELD)
+@JacksonXmlRootElement(localName = "Note")
 public class Note {
 	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JacksonXmlProperty(localName = "Id")
 	private Long id;
 
 	@NotBlank
+	@JacksonXmlProperty(localName = "Title")
 	private String title;
 
 	@NotBlank
+	@JacksonXmlProperty(localName = "Content")
 	private String content;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreatedDate
+	@JacksonXmlProperty(localName = "CreatedAt")
 	private Date createdAt;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
+	@JacksonXmlProperty(localName = "UpdatedAt")
 	private Date updatedAt;
 
 	public Long getId() {
